@@ -1,0 +1,23 @@
+<nav class="main-menu">
+    <ul>
+        <li *ngFor="let item of views">
+            <a href="{{ item.route }}" class="{{ currentUrl == item.route ? 'active' : '' }}">
+                <i class="fa fa-{{ item.icon }} fa-2x"></i>
+                <span class="nav-text">
+                    {{ item.title }}
+                </span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="logout">
+        <li>
+            <a href="#">
+                    <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
+                    Logout
+                </span>
+            </a>
+        </li>
+    </ul>
+</nav>

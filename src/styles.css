@@ -1,1 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --bg-dark: #292c2f;
+    --bg-black: #000000;
+    --bg-light: #ffffff;
+    --fs-dark: #292c2f;
+    --fs-light: #ffffff;
+    --bg-primary: #00b4d8;
+    --bg-primary-hover: #0077b6;
+    --bg-danger: #e63946;
+    --bg-danger-hover: #c1121f;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+a {
+    cursor: pointer;
+}
+
+/* NOTE - Dropdown */
+.nav-item-dropdown {
+    position: relative;
+    list-style: none;
+}
+
+.nav-item-dropdown:hover > .dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-trigger {
+    position: relative;
+}
+
+.dropdown-trigger:focus + .dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-trigger::after {
+    content: "›";
+    position: absolute;
+    color: var(--fs-light);
+    font-size: 24px;
+    font-weight: bold;
+    transform: rotate(90deg);
+    top: 0;
+    right: -15px;
+}
+
+.dropdown-menu {
+    background-color: var(--bg-dark);
+    display: inline-block;
+    text-align: right;
+    position: absolute;
+    top: 2.5rem;
+    right: -10px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    width: 160px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.dropdown-menu a {
+    color: #fff;
+}
+
+.dropdown-menu-item {
+    cursor: pointer;
+    padding: .2rem .5em;
+    text-align: center;
+    list-style: none;
+}
+
+.dropdown-menu-item:hover {
+    background-color: var(--bg-black);
+}

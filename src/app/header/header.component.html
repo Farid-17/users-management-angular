@@ -1,1 +1,18 @@
-<p>header works!</p>
+<header class="header-fixed">
+    <div class="header-limiter">
+        <h1>
+            <a href="/">Formation <span>Angular</span></a>
+        </h1>
+
+        <nav>
+            <li class="nav-item nav-item-dropdown">
+                <a class="dropdown-trigger">{{ currentLang?.name }}</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-menu-item" *ngFor="let lang of langs" (click)="changeLang(lang.value)">
+                        <a>{{ lang.name }}</a>
+                    </li>
+                </ul>
+            </li>
+        </nav>
+    </div>
+</header>

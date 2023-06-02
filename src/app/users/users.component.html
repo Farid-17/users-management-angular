@@ -1,0 +1,38 @@
+<div class="custom-btn-container">
+    <button class="custom-btn btn-10">
+        <i class="fa fa-plus"></i>
+        <span>Add user</span>
+    </button>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th *ngFor="let column of columns;">{{ column }}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let user of users; let indexOfUser = index;">
+            <td>{{ indexOfUser + 1 }}</td>
+            <td>
+                <img src="{{ user?.avatar }}" alt="{{ user?.first_name }}">
+            </td>
+            <td>{{ user?.first_name + ' ' + user?.last_name }}</td>
+            <td>{{ user?.email }}</td>
+            <td>
+                <button class="button button-primary icon-button me-2">
+                    <i class="fa fa-pencil icon-button__icon"></i>
+                </button>
+                <button class="button button-danger icon-button" (click)="removeUser(indexOfUser)">
+                    <i class="fa fa-minus icon-button__icon"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class='pagination-container'>
+    <button class="pagination" (click)="pageUser(1)">1</button>
+    <button class="pagination" (click)="pageUser(2)">2</button>
+</div>

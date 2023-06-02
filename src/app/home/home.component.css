@@ -1,0 +1,13 @@
+.dash-wrapper {
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.side-content {
+    overflow: auto;
+    width: calc(100% - 60px);
+    margin-left: 60px;
+    padding: 1.2rem;
+}
