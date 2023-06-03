@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import * as global from '../../globals';
 
 @Component({
@@ -12,7 +13,7 @@ export class UsersComponent {
   public columns = ['#', 'Avatar', 'Name', 'Email', 'Actions'];
   public users: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     this.getUsers();
@@ -22,6 +23,7 @@ export class UsersComponent {
     this.http.get(global.apiLinks.users + '?page=' + page + '&per_page=' + global.defaultSettings.perPage)
       .subscribe((response: any) => {
         this.users = response?.data;
+        global.data.users = response?.data;
       });
   }
 
@@ -40,5 +42,15 @@ export class UsersComponent {
     });
 
     this.users = newUsers;
+  }
+
+  public formPath = (id: any = null) => {
+    let path: string = '/users/form';
+
+    if (id != null) {
+      path = path + '/' + id;
+    }
+
+    this.router.navigate([path]);
   }
 }

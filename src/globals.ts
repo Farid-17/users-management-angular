@@ -27,6 +27,10 @@ export const langs = [
     },
 ]
 
+export var data = {
+    users: [],
+};
+
 /**
  *
  * @param value string

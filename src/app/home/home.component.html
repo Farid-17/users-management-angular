@@ -2,9 +2,10 @@
 
 <div class="dash-wrapper">
     <app-sidebar></app-sidebar>
-    
+
     <div class="side-content">
         <app-welcome *ngIf="currentUrl == '/'"></app-welcome>
         <app-users *ngIf="currentUrl == '/users'"></app-users>
+        <app-add-user *ngIf="currentUrl == '/users/form'"></app-add-user>
     </div>
 </div>

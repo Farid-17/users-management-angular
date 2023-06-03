@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'users/form', component: HomeComponent },
   { path: 'users', component: HomeComponent },
 ];
 
