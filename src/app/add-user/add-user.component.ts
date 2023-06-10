@@ -10,12 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit, OnDestroy {
-  public first_name: string = '';
-  public last_name: string = '';
-  public email: string = '';
-  public phone: string = '';
-  public job: string = '';
-  public myForm!: FormGroup;
+  public form!: FormGroup;
 
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) {}
 
@@ -34,33 +29,29 @@ export class AddUserComponent implements OnInit, OnDestroy {
   }
 
   public submitForm = () => {
-    this.saveUser({
-      first_name: this.first_name,
-      last_name: this.last_name,
-      email: this.email,
-      phone: this.phone,
-      job: this.job,
-    });
+    // console.log(this.form.controls["first_name"]);
+
+    if (!this.form.valid) {
+      global.showAlert("warning", "Please enter all formation correct!");
+      return;
+    }
+
+    this.saveUser(this.form.value);
   }
 
   public formValidation = () => {
-    this.myForm = this.formBuilder.group({
-      first_name: [this.first_name, Validators.required],
-      last_name: [this.last_name, Validators.required],
-      email: [this.email, Validators.required, Validators.email],
-      phone: [this.phone, Validators.required],
-      job: [this.job, Validators.required],
+    this.form = this.formBuilder.group({
+      first_name: ["", Validators.required],
+      last_name: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      phone: ["", Validators.required],
+      job: ["", Validators.required],
     });
   }
 
   public saveUser = (data: any) => {
     let link = global.apiLinks.users,
       thisClass = this;
-
-    if (!this.myForm.valid) {
-      global.showAlert("warning", "Please enter all formation correct!");
-      return;
-    }
 
     if (global.data.id != null) {
       data.id = global.data.id;

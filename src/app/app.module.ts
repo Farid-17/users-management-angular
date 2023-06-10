@@ -10,7 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { UsersComponent } from './users/users.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
@@ -28,6 +28,7 @@ import { AlertComponent } from './alert/alert.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],
