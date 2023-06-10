@@ -6,6 +6,8 @@
     <div class="side-content">
         <app-welcome *ngIf="currentUrl == '/'"></app-welcome>
         <app-users *ngIf="currentUrl == '/users'"></app-users>
-        <app-add-user *ngIf="currentUrl == '/users/form'"></app-add-user>
+        <app-add-user *ngIf="currentUrl.includes('/users/form')"></app-add-user>
     </div>
+
+    <app-alert></app-alert>
 </div>

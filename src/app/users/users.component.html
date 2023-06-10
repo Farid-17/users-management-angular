@@ -21,10 +21,10 @@
             <td>{{ user?.first_name + ' ' + user?.last_name }}</td>
             <td>{{ user?.email }}</td>
             <td>
-                <button class="button button-primary icon-button me-2">
+                <button class="button button-primary icon-button me-2" (click)="editUser(user.id)">
                     <i class="fa fa-pencil icon-button__icon"></i>
                 </button>
-                <button class="button button-danger icon-button" (click)="removeUser(indexOfUser)">
+                <button class="button button-danger icon-button" (click)="removeUser(user.id)">
                     <i class="fa fa-minus icon-button__icon"></i>
                 </button>
             </td>

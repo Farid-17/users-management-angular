@@ -32,11 +32,15 @@ export class UsersComponent {
     this.getUsers(page);
   }
 
-  public removeUser = (index: number) => {
+  public editUser = (id: number) => {
+    this.formPath(id);
+  }
+
+  public removeUser = (id: number) => {
     let newUsers: any[] = [];
 
     this.users.forEach((user, key) => {
-      if (key != index) {
+      if (key != id) {
         newUsers.push(user);
       }
     });

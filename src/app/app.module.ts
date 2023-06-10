@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { FormsModule } from '@angular/forms';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     UsersComponent,
     WelcomeComponent,
-    AddUserComponent
+    AddUserComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -2,27 +2,28 @@
     <div id="contact" action="" method="post">
         <h3>Add user</h3>
         <fieldset>
-            <input type="text" placeholder="First name" [(ngModel)]="first_name">
+            <input type="text" placeholder="First name" [(ngModel)]="first_name" required>
         </fieldset>
 
         <fieldset>
-            <input type="text" placeholder="Last name" [(ngModel)]="last_name">
+            <input type="text" placeholder="Last name" [(ngModel)]="last_name" required>
         </fieldset>
 
         <fieldset>
-            <input type="email" placeholder="Email" [(ngModel)]="email">
+            <input type="email" placeholder="Email" [(ngModel)]="email" required>
         </fieldset>
 
         <fieldset>
-            <input type="text" placeholder="First name" [(ngModel)]="phone">
+            <input type="text" placeholder="Phone" [(ngModel)]="phone" required>
         </fieldset>
 
         <fieldset>
-            <textarea placeholder="First name" [(ngModel)]="job"></textarea>
+            <textarea placeholder="Job" [(ngModel)]="job" required></textarea>
         </fieldset>
 
         <fieldset class="button-container">
-            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending"
+                (click)="submitForm()">Save</button>
         </fieldset>
     </div>
 </div>

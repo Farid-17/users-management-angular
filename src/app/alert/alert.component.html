@@ -1,0 +1,5 @@
+<div id="alert" class="alert {{ globalVariable.data.alert.class }}" style="opacity: 0;">
+    <i class="fa {{ globalVariable.data.alert.icon }}"></i>
+    {{ globalVariable.data.alert.title }}
+    <button type="button" (click)="globalVariable.hideAlert()">&#x2717;</button>
+</div>
