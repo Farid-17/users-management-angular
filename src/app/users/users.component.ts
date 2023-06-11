@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import * as global from '../../globals';
 
@@ -36,16 +36,23 @@ export class UsersComponent {
     this.formPath(id);
   }
 
-  public removeUser = (id: number) => {
+  public removeUser = (id: number, index?: number) => {
     let newUsers: any[] = [];
 
     this.users.forEach((user, key) => {
-      if (key != id) {
+      if (key != index) {
         newUsers.push(user);
       }
     });
 
     this.users = newUsers;
+    this.http.delete(global.apiLinks.users + "/" + id)
+        .subscribe((response: any) => {
+          global.showAlert("success", "Data deleted successfuly");
+        }, (error: HttpErrorResponse) => {
+          let errorMessage = "Status code: " + error.status + ". An error occurred: " + error.message
+          global.showAlert("error", errorMessage);
+        });
   }
 
   public formPath = (id: any = null) => {

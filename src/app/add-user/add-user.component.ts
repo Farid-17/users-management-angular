@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddUserComponent implements OnInit, OnDestroy {
   public form!: FormGroup;
   public isEdit: boolean = false;
+  public user: any;
+  public jobs: any = ["Developer", "Teacher", "Police", "Manager", "Director", "Actor"];
 
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) {}
 
@@ -20,6 +22,7 @@ export class AddUserComponent implements OnInit, OnDestroy {
 
     if (linkWords.length > 3 && !["", null, undefined].includes(linkWords[linkWords.length - 1])) {
       global.data.id = parseInt(linkWords[linkWords.length - 1]);
+      this.getUser();
       this.isEdit = true;
     }
 
@@ -40,7 +43,7 @@ export class AddUserComponent implements OnInit, OnDestroy {
   }
 
   public formValidation = () => {
-    let numberPattern = "^(\\+212|0)(5|6|7)[0-9]{8}$"
+    let numberPattern = "^(\\+212|0)(5|6|7)[0-9]{8}$";
 
     this.form = this.formBuilder.group({
       first_name: ["", Validators.required],
@@ -49,6 +52,29 @@ export class AddUserComponent implements OnInit, OnDestroy {
       phone: ["", [Validators.required, Validators.pattern(numberPattern)]],
       job: ["", Validators.required],
     });
+  }
+
+  public generateRandomNumber(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  public getUser = () => {
+    let thisClass = this;
+    this.http.get(global.apiLinks.users + "/" + global.data.id)
+        .subscribe((response: any) => {
+          global.showAlert("success", "Data saved successfuly", function () {
+            thisClass.user = response.data;
+            thisClass.form.controls['first_name'].setValue(thisClass.user.first_name);
+            thisClass.form.controls['last_name'].setValue(thisClass.user.last_name);
+            thisClass.form.controls['email'].setValue(thisClass.user.email);
+            // thisClass.form.controls['phone'].setValue("+2126" + thisClass.generateRandomNumber(11111111, 99999999));
+            thisClass.form.controls['phone'].setValue("+212" + thisClass.generateRandomNumber(5, 7) + thisClass.generateRandomNumber(11111111, 99999999));
+            thisClass.form.controls['job'].setValue(thisClass.jobs[thisClass.generateRandomNumber(0, thisClass.jobs.length - 1)]);
+          }, false);
+        }, (error: HttpErrorResponse) => {
+          let errorMessage = "Status code: " + error.status + ". An error occurred: " + error.message
+          global.showAlert("error", errorMessage);
+        });
   }
 
   public saveUser = (data: any) => {
