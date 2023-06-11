@@ -7,7 +7,7 @@
     border-radius: 3px 3px 3px 3px;
 }
 
-.alert button {
+.alert-button {
   margin-left: 1rem;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -21,15 +21,34 @@
   color: #059;
   background-color: #BEF;
 }
+
+.info-msg .alert-button {
+  color: #059;
+}
+
 .success-msg {
   color: #270;
   background-color: #DFF2BF;
 }
+
+.success-msg .alert-button {
+  color: #270;
+}
+
 .warning-msg {
   color: #9F6000;
   background-color: #FEEFB3;
 }
+
+.warning-msg .alert-button {
+  color: #9F6000;
+}
+
 .error-msg {
   color: #D8000C;
   background-color: #FFBABA;
+}
+
+.error-msg .alert-button {
+  color: #D8000C;
 }
